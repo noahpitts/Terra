@@ -181,6 +181,12 @@ ul
     font-family: 'Source Code Pro', monospace;
 }
 
+/* IMAGE */
+
+img {
+    width: 100%;
+}
+
 
 
 /* CLASSES */
@@ -198,3 +204,23 @@ a.code-cite {
 .hidden {
     display: none;
 } 
+
+.bib-section {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.bib-entry {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+}
+
+.bib-entry em {
+    color: #1EB4F0;
+}
+
+.anno {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 14px;
+    padding-left: 40px;
+}
