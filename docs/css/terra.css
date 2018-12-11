@@ -29,9 +29,9 @@ section
 
 h1
 {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Code Pro', monospace;
     color: #1EB4F0;
-    font-weight: 200;
+    font-weight: 100;
     font-size: 60pt;
     text-align: center;
     margin-bottom: 0px;
@@ -97,20 +97,25 @@ blockquote
 
 blockquote p
 {
-    font-family: 'Source Serif Pro', serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 100;
+    font-style: italic;
 }
 
 blockquote cite
 {
     font-family: 'Source Sans Pro', sans-serif;
+    float: right;
 }
 
 /* LINKS */
 
-a
-{
-    color: #1EB4F0;
+a{
+    color: #E6E6E6;
     text-decoration: none;
+}
+a:hover {
+    color: #1EB4F0;
 }
 
 /* NAV BAR */
@@ -180,4 +185,16 @@ ul
 
 /* CLASSES */
 
+div.code-cite {
+    font-family: 'Source Code Pro', monospace;
+    text-align: right;
+    
+}
+a.code-cite {
+    cursor:pointer;
+    display: block;
+}
 
+.hidden {
+    display: none;
+} 

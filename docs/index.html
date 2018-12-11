@@ -1,136 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Title -->
-        <title>terra</title>
-        <meta name="description" content="Terra Project">
-        <meta name="author" content="Noah Pitts">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" href="./icon/favicon.png">
+    <!-- Title -->
+    <title>terra</title>
+    <meta name="description" content="Terra Project">
+    <meta name="author" content="Noah Pitts">
 
-        <!-- Fonts -->
-        <!-- <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro" rel="stylesheet"> -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./icon/favicon.png">
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="./css/terra.css">
+    <!-- Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro" rel="stylesheet"> -->
 
-        <!-- JS -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/terra.css">
 
-    </head>
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
 
-    <header>
+    <!-- CODE DISPLAY FUNCTION -->
+    <script>
+        function displayCode(id) {
+            var element = document.getElementById(id);
+            if (element.classList.contains("hidden")) {
+                element.classList.remove("hidden");
+            } else {
+                element.classList.add("hidden");
+            }
+        }
+    </script>
+
+</head>
+
+<header>
+
+</header>
+
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <ul>
+            <li class="nav-title"><a href="#cover" class="nav-title">terra</a></li>
+            <li><a href="#glossary">glossary</a></li>
+            <li><a href="#annotated-bibliography">bibliography</a></li>
+            <li><a href="#site-description">site</a></li>
+            <li><a href="#research-methods">methods</a></li>
+            <li><a href="#precedent-analysis">precedent</a></li>
+            <li><a href="#theoretical-framework">framework</a></li>
+            <li><a href="#research-questions-section">questions</a></li>
+            <li><a href="#abstract-section">abstract</a></li>
+        </ul>
+        </div>
+    </nav>
+    </nav>
+
+    <!-- COVER -->
+    <div class="break" id="cover">
+        <h1>terra project</h1>
+        <!-- <h3>site under construction, please come back soon!!</h3> -->
+        <div id="cover-sketch"></div>
         
-    </header>
+        <!-- COVER CODE -->
+        <script>
+            var cols, rows;
+            var scl = 20;
+            var w = 1200;
+            var h = 700;
 
-    <body>
-        <nav>
+            var flying = 0;
+
+            var terrain = [];
+
+            function setup() {
+                var canvas = createCanvas(1200, 300, WEBGL);
+                canvas.parent('cover-sketch');
+                cols = w / scl;
+                rows = h / scl;
+
+                for (var x = 0; x < cols; x++) {
+                    terrain[x] = [];
+                    for (var y = 0; y < rows; y++) {
+                        terrain[x][y] = 0;
+                    }
+                }
+            }
+
+            function draw() {
+                flying -= 0.05;
+                var yoff = flying;
+                for (var y = 0; y < rows; y++) {
+                    var xoff = 0;
+                    for (var x = 0; x < cols; x++) {
+                        terrain[x][y] = map(noise(xoff, yoff), 0, 1, -100, 100);
+                        xoff += 0.2;
+                    }
+                    yoff += 0.2;
+                }
+
+                background(30, 30, 30);
+                stroke(100, 100, 100);
+                strokeWeight(1.5);
+                translate(0, 50);
+                rotateX(PI / 3);
+                fill(30, 30, 30);
+
+                translate(-w / 2, -h / 2);
+
+                for (var y = 0; y < rows - 1; y++) {
+                    beginShape(TRIANGLE_STRIP);
+                    for (var x = 0; x < cols; x++) {
+                        vertex(x * scl, y * scl, terrain[x][y]);
+                        vertex(x * scl, (y + 1) * scl, terrain[x][y + 1]);
+                    }
+                    endShape();
+                }
+            }
+        </script>
+
+        <div class="code-cite">
+            <a class="code-cite"onclick="displayCode('cover-code')">code</a>
+        </div>
+
+        <!-- Generated from: http://hilite.me/ -->
+
+        <div class="code hidden" id="cover-code">
+            <!-- HTML generated using hilite.me -->
+            <div style="background: #202020; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+                <table>
+                    <tr>
+                        <td>
+                            <pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
+                        </td>
+                        <td>
+                            <pre style="margin: 0; line-height: 125%"><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">cols,</span> <span style="color: #d0d0d0">rows;</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">scl</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">20</span><span style="color: #d0d0d0">;</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">w</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">1200</span><span style="color: #d0d0d0">;</span>
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">h</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">800</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">flying</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span>
+
+<span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">terrain</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[];</span>
+
+<span style="color: #6ab825; font-weight: bold">function</span> <span style="color: #d0d0d0">setup()</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">canvas</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">createCanvas(</span><span style="color: #3677a9">1200</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">300</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">WEBGL);</span>
+  <span style="color: #d0d0d0">canvas.parent(</span><span style="color: #ed9d13">&#39;cover-sketch&#39;</span><span style="color: #d0d0d0">);</span>
+  <span style="color: #d0d0d0">cols</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">w</span> <span style="color: #d0d0d0">/</span> <span style="color: #d0d0d0">scl;</span>
+  <span style="color: #d0d0d0">rows</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">h/</span> <span style="color: #d0d0d0">scl;</span>
+
+  <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">cols;</span> <span style="color: #d0d0d0">x++)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">terrain[x]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">[];</span>
+    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">rows;</span> <span style="color: #d0d0d0">y++)</span> <span style="color: #d0d0d0">{</span>
+      <span style="color: #d0d0d0">terrain[x][y]</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">}</span>
+  <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>
+
+<span style="color: #6ab825; font-weight: bold">function</span> <span style="color: #d0d0d0">draw()</span> <span style="color: #d0d0d0">{</span>
+  <span style="color: #d0d0d0">flying</span> <span style="color: #d0d0d0">-=</span> <span style="color: #3677a9">0.05</span><span style="color: #d0d0d0">;</span>
+  <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">yoff</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">flying;</span>
+  <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">rows;</span> <span style="color: #d0d0d0">y++)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">xoff</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">cols;</span> <span style="color: #d0d0d0">x++)</span> <span style="color: #d0d0d0">{</span>
+      <span style="color: #d0d0d0">terrain[x][y]</span> <span style="color: #d0d0d0">=</span> <span style="color: #d0d0d0">map(noise(xoff,</span> <span style="color: #d0d0d0">yoff),</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">1</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">-</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">100</span><span style="color: #d0d0d0">);</span>
+      <span style="color: #d0d0d0">xoff</span> <span style="color: #d0d0d0">+=</span> <span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">;</span>
+    <span style="color: #d0d0d0">}</span>
+    <span style="color: #d0d0d0">yoff</span> <span style="color: #d0d0d0">+=</span> <span style="color: #3677a9">0.2</span><span style="color: #d0d0d0">;</span>
+  <span style="color: #d0d0d0">}</span>
+
+  <span style="color: #d0d0d0">background(</span><span style="color: #3677a9">30</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">30</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">30</span><span style="color: #d0d0d0">);</span>
+  <span style="color: #d0d0d0">stroke(</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">100</span><span style="color: #d0d0d0">);</span>
+  <span style="color: #d0d0d0">strokeWeight(</span><span style="color: #3677a9">1.5</span><span style="color: #d0d0d0">);</span>
+  <span style="color: #d0d0d0">translate(</span><span style="color: #3677a9">0</span><span style="color: #d0d0d0">,</span> <span style="color: #3677a9">50</span><span style="color: #d0d0d0">);</span>
+  <span style="color: #d0d0d0">rotateX(PI/</span><span style="color: #3677a9">3</span><span style="color: #d0d0d0">);</span>
+  <span style="color: #d0d0d0">fill(</span><span style="color: #3677a9">30</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">30</span><span style="color: #d0d0d0">,</span><span style="color: #3677a9">30</span><span style="color: #d0d0d0">);</span>
+  
+  <span style="color: #d0d0d0">translate(-w/</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">,</span> <span style="color: #d0d0d0">-h/</span><span style="color: #3677a9">2</span><span style="color: #d0d0d0">);</span>
+
+  <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">y</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">rows-</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">y++)</span> <span style="color: #d0d0d0">{</span>
+    <span style="color: #d0d0d0">beginShape(TRIANGLE_STRIP);</span>
+    <span style="color: #6ab825; font-weight: bold">for</span> <span style="color: #d0d0d0">(</span><span style="color: #6ab825; font-weight: bold">var</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">=</span> <span style="color: #3677a9">0</span><span style="color: #d0d0d0">;</span> <span style="color: #d0d0d0">x</span> <span style="color: #d0d0d0">&lt;</span> <span style="color: #d0d0d0">cols;</span> <span style="color: #d0d0d0">x++)</span> <span style="color: #d0d0d0">{</span>
+      <span style="color: #d0d0d0">vertex(x*scl,</span> <span style="color: #d0d0d0">y*scl,</span> <span style="color: #d0d0d0">terrain[x][y]);</span>
+      <span style="color: #d0d0d0">vertex(x*scl,</span> <span style="color: #d0d0d0">(y+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">)*scl,</span> <span style="color: #d0d0d0">terrain[x][y+</span><span style="color: #3677a9">1</span><span style="color: #d0d0d0">]);</span>
+    <span style="color: #d0d0d0">}</span>
+    <span style="color: #d0d0d0">endShape();</span>
+  <span style="color: #d0d0d0">}</span>
+<span style="color: #d0d0d0">}</span>
+</pre>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- ABSTRACT -->
+    <div class="break" id="abstract-section">
+        <h2>abstact</h2>
+        <section>
+            <p>Research in Artificial Intelligence and Machine Learning has entered a phase of rapid growth over the
+                past decade and with the inclusion of abundant data sources and deep networks, new models are being
+                proposed on the timespan of weeks rather than years. Until recently, machine learning goals were
+                primarily focused on inference rather than the generation of data. However, with the inclusion of
+                generative algorithms into the arsenal of AI technologies and the inevitable adoption of such
+                techniques into the design professions, it becomes necessary to consider the role in which AI may
+                affect the profession and the processes of design itself.</p>
+
+            <p>A common ML paradigm would take a set of features, 𝑋, and learn to produce a label, 𝑌, describing
+                those features. A generative network reverses this logic, taking in a label, 𝑌, potentially random,
+                and producing a set of features, 𝑍, that on the training limit is indistinguishable from a training
+                dataset, while not from the dataset. The output of a generative model is an entirely synthetic creation
+                with similar structure to the training data, based on the parameters tuned through a learning process.
+                In 2014, Ian Goodfellow proposed the seminal model for Generative Adversarial Networks1 or GANs, a
+                class of machine learning models that learns to create through the implementation of zero-sum game
+                theory. In this paradigm, two networks are paired against each other, one acting as a generator for
+                data samples, the other acting as a discriminator, probabilistically evaluating whether the generated
+                sample is of the training data or is generated.</p>
+
+            <p>The invention of GANs has already begun to show significant promise in the generation of synthetic
+                images trained on canonical ML training data.2 However, at the present, there has been little
+                application (at least published) of these tools to real world examples in the design professions such
+                as architecture, either exploring the potentials for design exploration or for more directed design
+                problem solving. The intent of this thesis is to implement a series of GANs3 to explore the relevance
+                and potential for incorporation in to the future of design practice. While GANs are still in an
+                extremely early area of research and development, I will be using them to ask fundamental questions of
+                artificial architectural expression such as synthetic tectonics, phenomenology, and representation.</p>
+        </section>
+    </div>
+
+    <!-- RESEARCH QUESTIONS -->
+    <div class="break" id="research-questions-section">
+        <h2>research questions</h2>
+        <section>
+            <p>The overarching question is what role and potential capacity generative adversarial networks can play in
+                the inclusion of artificial intelligence and machine learning in design.5 This question is
+                intentionally framed to be exploratory and inductive rather than deductive. The intent is to frame the
+                technology within the discourse of design theory rather than to attempt to solve a particular design
+                problem.6 A list of initial sub questions, both theoretical and technical, are expressed below:</p>
 
             <ul>
-                <li class="nav-title"><a href="#" target="_blank" class="nav-title">terra</a></li>
-                <li><a href="#glossary">glossary</a></li>
-                <li><a href="#annotated-bibliography">bibliography</a></li>
-                <li><a href="#site-description">site</a></li>
-                <li><a href="#research-methods">methods</a></li>
-                <li><a href="#precedent-analysis">precedent</a></li>
-                <li><a href="#theoretical-framework">framework</a></li>
-                <li><a href="#research-questions-section">questions</a></li>
-                <li><a href="#abstract-section">abstract</a></li>
-            </ul></div>
-            </nav>
-        </nav>
-        
-        <!-- TITLE -->
-        <h1>Terra Project</h1>
-        <h3>site under construction, please come back soon!!</h3>
+                <li>What tools and frameworks are required to implement a GAN (tensorflow, keras, scikit-learn, etc.)?
+                </li>
+                <li>What data forms and structures (images, geometry, text) are able to be utilized with a GAN?</li>
+                <li>What are some of the potential sources for training data (generated data and/or collected data)?
+                </li>
+                <li>What is the timescale for training a generative model and how does this scale with more complex
+                    types of data? </li>
+                <li>What is the timescale for inference and sampling (after the model is trained) and how does this
+                    incorporate with other design applications? </li>
+                <li>What forms of media are relevant to the inclusion of a generative model (CAD, VR/AR, Raster,
+                    Vector, etc)? </li>
+                <li>What is an analogous framework for evaluating the application of a technology to a design theory
+                    (what are historical examples of how early technology has been brought into practice)? </li>
+                <li>Given some clarification from previous questions, what are a set of case-studies/demos that can be
+                    implemented within a reasonable time while still providing validation of the model (either positive
+                    or negative)?</li>
+                <li>What are the key metrics, if any, that can be used (or borrowed from core ML research) for
+                    validation and how are these appropriated into design theory. </li>
+                <li>Given that the scope of this inquiry will be limited and using a posteriori methodology, what are
+                    the gaps in knowledge, and where are the areas and potential for further research?</li>
+            </ul>
+        </section>
+    </div>
 
-        <!-- ABSTRACT -->
-        <div class="break" id="abstract-section">
-            <h2>abstact</h2>
-            <section >
-                <p>Research in Artificial Intelligence and Machine Learning has entered a phase of rapid growth over the past decade and with the inclusion of abundant data sources and deep networks, new models are being proposed on the timespan of weeks rather than years. Until recently, machine learning goals were primarily focused on inference rather than the generation of data. However, with the inclusion of generative algorithms into the arsenal of AI technologies and the inevitable adoption of such techniques into the design professions, it becomes necessary to consider the role in which AI may affect the profession and the processes of design itself.</p>
+    <!-- THEORETICAL FRAMEWORK -->
+    <div class="break" id="theoretical-framework">
+        <h2>theoretical framework</h2>
+        <section>
+            <blockquote>
+                <p>Generative design is an iterative design process that involves a program that will generate a
+                    certain number of outputs that meet certain constraints, and a designer that will fine tune the
+                    feasible region by changing minimal and maximal values of an interval in which a variable of the
+                    program meets the set of constraints, in order to reduce or augment the number of outputs to choose
+                    from. The program doesn't need to be run on a machine like a digital computer, it can be run by a
+                    human for example with pen and paper. The designer doesn't need to be a human, it can be a test
+                    program in a testing environment or an artificial intelligence. The designer learns to refine the
+                    program with each iteration as his design goals become better defined over time.</p>
+                <cite><a href="https://en.wikipedia.org/wiki/Generative_design" target="_blank">Wikipedia</a></cite>
+            </blockquote>
+        </section>
+    </div>
 
-                <p>A common ML paradigm would take a set of features, 𝑋, and learn to produce a label, 𝑌, describing those features. A generative network reverses this logic, taking in a label, 𝑌, potentially random, and producing a set of features, 𝑍,  that on the training limit is indistinguishable from a training dataset, while not from the dataset. The output of a generative model is an entirely synthetic creation with similar structure to the training data, based on the parameters tuned through a learning process. In 2014, Ian Goodfellow proposed the seminal model for Generative Adversarial Networks1 or GANs, a class of machine learning models that learns to create through the implementation of zero-sum game theory. In this paradigm, two networks are paired against each other, one acting as a generator for data samples, the other acting as a discriminator, probabilistically evaluating whether the generated sample is of the training data or is generated.</p>  
+    <!-- PRECEDENT ANALYSIS -->
+    <div class="break" id="precedent-analysis">
+        <h2>precedent analysis</h2>
+        <section>
 
-                <p>The invention of GANs has already begun to show significant promise in the generation of synthetic images trained on canonical ML training data.2 However, at the present, there has been little application (at least published) of these tools to real world examples in the design professions such as architecture, either exploring the potentials for design exploration or for more directed design problem solving. The intent of this thesis is to implement a series of GANs3 to explore the relevance and potential for incorporation in to the future of design practice. While GANs are still in an extremely early area of research and development, I will be using them to ask fundamental questions of artificial architectural expression such as synthetic tectonics, phenomenology, and representation.</p>
-            </section>
-        </div>
+        </section>
+    </div>
 
-        <!-- RESEARCH QUESTIONS -->
-        <div class="break" id="research-questions-section">
-            <h2>research questions</h2>
-            <section>
-                <p>The overarching question is what role and potential capacity generative adversarial networks can play in the inclusion of artificial intelligence and machine learning in design.5 This question is intentionally framed to be exploratory and inductive rather than deductive. The intent is to frame the technology within the discourse of design theory rather than to attempt to solve a particular design problem.6 A list of initial sub questions, both theoretical and technical, are expressed below:</p>
+    <!-- RESEARCH METHODS -->
+    <div class="break" id="research-methods">
+        <h2>research methods</h2>
+        <section>
 
-                <ul>
-                    <li>What tools and frameworks are required to implement a GAN (tensorflow, keras, scikit-learn, etc.)? </li>
-                    <li>What data forms and structures (images, geometry, text) are able to be utilized with a GAN?</li>
-                    <li>What are some of the potential sources for training data (generated data and/or collected data)? </li>
-                    <li>What is the timescale for training a generative model and how does this scale with more complex types of data? </li>
-                    <li>What is the timescale for inference and sampling (after the model is trained) and how does this incorporate with other design applications? </li>
-                    <li>What forms of media are relevant to the inclusion of a generative model (CAD, VR/AR, Raster, Vector, etc)? </li>
-                    <li>What is an analogous framework for evaluating the application of a technology to a design theory (what are historical examples of how early technology has been brought into practice)? </li>
-                    <li>Given some clarification from previous questions, what are a set of case-studies/demos that can be implemented within a reasonable time while still providing validation of the model (either positive or negative)?</li>
-                    <li>What are the key metrics, if any, that can be used (or borrowed from core ML research) for validation and how are these appropriated into design theory. </li>
-                    <li>Given that the scope of this inquiry will be limited and using a posteriori methodology, what are the gaps in knowledge, and where are the areas and potential for further research?</li>
-                </ul>
-            </section>
-        </div>
+        </section>
+    </div>
 
-        <!-- THEORETICAL FRAMEWORK -->
-        <div class="break" id="theoretical-framework">
-            <h2>theoretical framework</h2>
-            <section>
-                <blockquote>
-                    <p>Generative design is an iterative design process that involves a program that will generate a certain number of outputs that meet certain constraints, and a designer that will fine tune the feasible region by changing minimal and maximal values of an interval in which a variable of the program meets the set of constraints, in order to reduce or augment the number of outputs to choose from. The program doesn't need to be run on a machine like a digital computer, it can be run by a human for example with pen and paper. The designer doesn't need to be a human, it can be a test program in a testing environment or an artificial intelligence. The designer learns to refine the program with each iteration as his design goals become better defined over time.</p>
-                    <cite><a href="https://en.wikipedia.org/wiki/Generative_design" target="_blank">Wikipedia</a></cite>
-                </blockquote>
-            </section>
-        </div>
+    <!-- SITE DESCRIPTION -->
+    <div class="break" id="site-description">
+        <h2>site description</h2>
+        <section>
 
-        <!-- PRECEDENT ANALYSIS -->
-        <div class="break" id="precedent-analysis">
-            <h2>precedent analysis</h2>
-            <section>
+        </section>
+    </div>
 
-            </section>
-        </div>
+    <!-- ANNOTATED BIBLIOGRAPHY -->
+    <div class="break" id="annotated-bibliography">
+        <h2>annotated bibliography</h2>
+        <section>
 
-        <!-- RESEARCH METHODS -->
-        <div class="break" id="research-methods">
-            <h2>research methods</h2>
-            <section>
+        </section>
+    </div>
 
-            </section>
-        </div>
+    <!-- GLOSSARY -->
+    <div class="break" id="glossary">
+        <h2>glossary</h2>
+        <section>
 
-        <!-- SITE DESCRIPTION -->
-        <div class="break" id="site-description">
-            <h2>site description</h2>
-            <section>
+        </section>
+    </div>
 
-            </section>
-        </div>
+</body>
 
-        <!-- ANNOTATED BIBLIOGRAPHY -->
-        <div class="break" id="annotated-bibliography">
-            <h2>annotated bibliography</h2>
-            <section>
-
-            </section>
-        </div>
-
-        <!-- GLOSSARY -->
-        <div class="break"  id="glossary">
-            <h2>glossary</h2>
-            <section>
-
-            </section>
-        </div>
-
-    </body>
 </html>
