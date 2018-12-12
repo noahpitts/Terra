@@ -231,3 +231,57 @@ a.code-cite {
     font-size: 14px;
     padding-left: 40px;
 }
+
+.model-section {
+    list-style-type: none;
+    padding-bottom: 20px;
+}
+
+.model-entry {
+    padding-top: 10px;
+}
+
+.model-header {
+    max-width: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    clear:left;
+}
+
+.model-name {
+    font-size: 30px;
+    font-family: 'Source Code Pro', monospace;
+    float: left;
+    color: #1EB4F0;
+    padding: 0px;
+    margin: 0px;
+}
+
+.model-anno {
+    float: left;
+    font-family: 'Source Serif Pro', serif;
+    padding-left: 30px;
+    padding-top: 10px;
+    margin:0px;
+}
+
+.model-display {
+    float: right;
+    color: #1EB4F0;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
+.model-code {
+    clear:left;
+    max-width: 100%;
+    font-family: 'Source Code Pro', monospace;
+    padding-top: 10px;
+    margin 0px;
+}
+
+.model-math {
+    padding-top: 10px;
+    margin 0px;
+    clear:left;
+    max-width: 100%;
+}
