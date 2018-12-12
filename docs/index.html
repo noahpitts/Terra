@@ -373,14 +373,16 @@
             <p>To provide a base understanding of deep learning, a technique part of the broader machine lerning field, this section will outline the core theory. Machine learning represents the field of study concerned with a range of algorithms, techniques, and statistical models known to impove their performance on specific tasks. In this sense, machine learning in its current state forms the model construction of a narrow artificial intelligence. Artificial intelligence is then concerned with not only the modeling of the environment, but the ability to decide, act, and interact with the environment based off of this internal model. Machine learning generally is concerned with creating reliable, accurate, and generalizable models of some phenomena, real or abstract, where the models are used for some specified prediction task. This could be as complex as predicting the outcome of certain events in an autonoumous vehicle example given an extensive aresenal of sensor information, or as straight forward as a linear regression prediction on the number of retweets Donald J Trump's next tweet will recieve given the corpus of all his previous tweets. In all cases the machine learning paradigm follows a similar pattern: (1) there exists some body of data discribing a phenomena of interest, (2) that data contains features (obvious or subtle) that signal the outcome of an event, and (3) the data can be encoded in a manner that exposes these signals. In cases where the features are rather apparent in the data, we can turn to more straight forward ML techniques such as linear and logistic regression. However, in cases where the features are not so obvious, more sophisticated metheds such as deep learning can be used. In deep learning, we are learning not only the relative weights of the features (as in regression) but also learning the features themselves. This ability with deep learning to learn the features along with their respective weights has brought on the recent wave of innovation in machine learning.</p>
 
             <img src="img/neuron.jpg" style="width:90%">
-            <figure>Figure 1: Diagram of the adaptive-iterative approach to generative design</figure>
+            <figure>Figure 3: Biological Nueron Model</figure>
             <br/>
 
-            <p>TODO</p>
-            
-            <img src="img/perceptron.svg" style="width:60%">
+            <p>To extend ML techniques and allow for feature learning, inspiration was taken from the biological model of the nueron as the atomic unit of cognition. <em>Figure 3</em> shows a rendered model of a biological nueron. Initial research into nueral science along side cybernetics and early artificial intelligence led to the development of generalized learning algorithms modeled after the biological nueron <em>in silico</em>. At inception, it was thought that AI development would progress quickly, however this was not the case as historic computation power was greatly undersized and unable to manage the memory and bandwidth requirements that would be on par with even the most simplest forms of biological life. Nevertheless, the presecptron model (<em>Figure 4</em>) still remains valid as one of the atomic units used in nueron networks.</p>
 
-            <p>TODO</p>
+            <img src="img/perceptron.svg" style="width:60%">
+            <figure>Figure 4: Computational Perceptron Model</figure>
+            <br/>
+
+            <p>The perceptron model is a mathmatical formulation and abstraction of nueron. While the biological nueron uses complicated biochemical activation functions, the perception models this behavior using basic linear algebra. <em>Figure 4</em> depicts the basic input/output scheme of the perceptron, where some set of inputs, <em>x<sub>0</sub> - x<sub>n</sub></em> , are weighted, <em>w<sub>0</sub> - w<sub>n</sub></em> , to form a linear combination that then passes through some mathmetical activation function to form the output <em>y</em>. Historically, this activation function has been a sigmoid, however in the recent era of nueral network design, the choices in activation functions has greatly increased. The activation function determines the output signal of the perception. This simple model can allow for complex behavior to take shape on the output line, given a set of input signals and thier corrisponding weights. The single perceptron model was the state of the art in nueral networks for the majority of the 20<sup>th</sup> century.</p>
 
             <table style="width:100%">
                 <tr>
@@ -388,10 +390,20 @@
                     <td><img src="img/net2.svg"></td>
                 </tr>
             </table>
+            <figure>Figure 5: Multi-Layer Perceptron Model</figure>
+            <br/>
 
-            <p>TODO</p>
+            <p>The multi-layer perceptron model (MLP) was the next extension of the perceptron model and is still commonly used today. The MLP organized arrays of perceptrons into layers connecting the output signals of one layer to the input receptors of the next higher-level layer. When all inputs and outputs are connected between adjacent layers, the model is said to be fully connected. <em>Figure 5 - left</em> shows a 5-layer fully connected MLP. The first layer is known as the input layer, and the last layer the output layer. All layers between the first and the last are known as hidden layers due to their nature of not being connected to any input or output signal in the system model. <em>Figure 5 - right</em> shows a representation of the model when an input signal is applied to the input layer, in this example as a series of floating point decimals normalized between 0 and 1. As different values are set on each of the input lines, the signal propogates through the hidden layers and on to the output layer. <em>Figure 5 - right</em> highlights the individual perceptron based on its output level. For different configurations of inputs, different perceptrons will 'light up' and propogate different signals upward. It is not hard to image and in fact is the case that very complex output behavior can be achieved as the network archietcture increases in complexity, both by expanding the number of nuerons per layer as well as the number of layers in the system. The network architecture can also be tailored to accomodate different input and output specifications depending on the task. In this sense, the scope of the model is very narrow and specific.</p>
+
+            <p>The ability to acheive complex behavior through a structure of atomic units is a feat in itself, but not very useful unless the system can achieve a desired complex behavior. In order to achieve some disired behavior or predicability in the model it must be trained. The weights of the perceptron and by extension the MLP models are the instruments that allow one to train the model. Considering that for some prediction task not all the inputs will be relevant or at least relatively relevant and so therefore we must be able to weight the reletive influence for a given input on the acting perceptron and this is done through back-propigation training. While the details of back-propigation are far too technical for this primer, the fundamental theory is rather straight forward. In training the model we are incrementally sending known data through the model and adjusting the model's weights until they produce a better prediction the next time around. When the known data point is applied to the model inputs, we will recieve some predicted output, if we know what the true output of the datapoint should be then we can measure the error of the model, or the difference between the true output and the predicted output. We then proceed to tune the weights of the model through gradient decent so that the predicted value is closer to the true value. As we continue to do this more times and for larger datasets, the model becomes a better predictor for the dataset as a whole, or the signals within it. If the dataset is representative of the phenomena of interest then the model is to some degree a predictor of that phenomena. The individual perceptrons are in essence learning features of the data latently, a very valuable tool when it is difficult to observe obvious patterns in the data naturally. The lower-level perceptrons are learning more fine-grained features, while the higher-level perceptron layers are learning more complex feature combinations.</p>
+
             <img src="img/CNN.svg">
+            <figure>Figure 6: Convolutional Neural Network Model</figure>
+            <br/>
 
+            <p>The connvolutional neural network (CNN)is again a further extension of the neural network structure that is particularly relevant to regular matrix-like data types, such as images and video, etc. The motivation behind the CNN was largely brought about through uses in computer vision and object detection in images. In this context, we are interested in learning features within the images that perhaps would be able to predict something useful. For example, what features might one look for in an image of a building in order to know if it is a building, or a dog, or something else. Since the features may not consistently exist in one place in the image, or be displayed in one way, it is as if we would like to be able to squint or blur the image in a way and then recheck if we can still decern some valid feature.The basic atomic unit of the CNN is the pixel or cell, analogous to the perceptron in the MLP. And the basic connection between convolutional layers is the convolution. A convolution can best be thought of as a blurring filter (although blurring is just an example), where some group of pixels are grouped together, reweighted and used to construct some lower dimension image. Similar to the MLP, this is done in layers, and the CNN progressivley operates on blurrier or more convoluted images though higher-levels of the network. Training is handled in a similar way, except that instead of learning input weights, we are learning filter weights. The hidden layers are also learning features of the data. Lower-level layers are learning fine grained image features such as edges, boudries, and patterns. While higher-level layers are learning more complex textures or whole objects.</p>
+
+            <p>The convolutional neural network will form the basic building blocks and deep learning architecture that will be used thoughout this project. </p>
 
         </section>
 
@@ -399,7 +411,11 @@
         <section>
 
             <p>TODO</p>
+
             <img src="img/conditional-inference-design-diagram.svg">
+            <figure>Figure 7: Diagram of the conditional-inference approach to generative design</figure>
+            <br/>
+
             <p>TODO</p>
 
             <img src="img/dcgan.jpg">
