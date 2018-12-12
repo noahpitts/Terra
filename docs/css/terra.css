@@ -82,6 +82,8 @@ h6
 /* TEXT */
 p
 {
+    clear: left;
+    clear: right;
     font-family: 'Source Serif Pro', serif;
     font-weight: 100;
     font-size: 13pt;
@@ -106,6 +108,15 @@ blockquote cite
 {
     font-family: 'Source Sans Pro', sans-serif;
     float: right;
+}
+
+figure {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: italic;
+    clear: right;
+    float: right;
+    margin-bottom: 40px;
+    margin-right: 0px;
 }
 
 /* LINKS */

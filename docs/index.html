@@ -332,36 +332,52 @@
         <h2>theoretical framework</h2>
         <section>
             <blockquote>
-                <p>Generative design is an iterative design process that involves a program that will generate a
-                    certain number of outputs that meet certain constraints, and a designer that will fine tune the
-                    feasible region by changing minimal and maximal values of an interval in which a variable of the
-                    program meets the set of constraints, in order to reduce or augment the number of outputs to choose
-                    from. The program doesn't need to be run on a machine like a digital computer, it can be run by a
-                    human for example with pen and paper. The designer doesn't need to be a human, it can be a test
-                    program in a testing environment or an artificial intelligence. The designer learns to refine the
-                    program with each iteration as his design goals become better defined over time.</p>
+                <p>Generative design is an iterative design process that involves a program that will generate a certain number of outputs that meet certain constraints, and a designer that will fine tune the feasible region by changing minimal and maximal values of an interval in which a variable of the program meets the set of constraints, in order to reduce or augment the number of outputs to choose from. The program doesn't need to be run on a machine like a digital computer, it can be run by a human for example with pen and paper. The designer doesn't need to be a human, it can be a test program in a testing environment or an artificial intelligence. The designer learns to refine the program with each iteration as his design goals become better defined over time.</p>
                 <cite><a href="https://en.wikipedia.org/wiki/Generative_design" target="_blank">Wikipedia</a></cite>
             </blockquote>
 
-            <p>TODO: Introduce Theory</p>
+            <br/>
+            <br/>
+
+            <p>With the rising use of computational techniques across many disiplines, generative design is becoming a signiifcant strategy in the design professions. Traditionally generative strategies have relied on discrete computational methods analogous to more process driven techniques, although substituting the redundant operations with more complicated procedures. In some cases such as the use of genetic algorithms, substantial computation is dedicated to the iterative processes that are required. Similar to the computational advances that are taking place in other fields, such as the physical sciences and within engineering diciplines, some of these more 'brute force' tactics are being replaced with machine learning, opening up an new window of inquiry into practice. The rising influence of machine learning within the broader study of artificial intelligence has allowed many problems to be framed from a completeley different angle.</p> 
+            
+            <p>Perhaps one of the most tangible contemporary examples of this shift has been seen in the rapid and recent development of self-driving cars. In this context, following more traditional discrete computational tactics would require a designer/programmer to confront the reality of encoding a potentially infinite number of conditional rule sets for the autonomous vehicle's behavior to follow. Instead however, the the complicated rule sets are replaced with rather standard training algorithms that crunch through abundant training data. The training data latently encodes signals that would otherwise need to be hard coded. The objective of the machine learning algorithm is to effectivley learn these signals in the data and produce a predictive models. In this sense, the computers intelegence, or ablitily to make make decisions in a changing environment, resembles more of a probability density function rather than a rule set. And the required inputs for the training of such a model relies on the span of the data, rather than in the completness of any enumerable rule set.</p>
+
+            <p>The power of machine learning is not domain specific however, but rather maluable in it's application. In a sense, any dataset may contain valid signals that can provide the basis for the creation of a predictive model. In the design professions there are many potential application that researchers will strive to uncover over the coming years as this new field takes shape and extends it's reach. The following sub-sections will elaborate on generative design practices, strating with a generalization of what I am calling adaptive-iterative design, or the more traditional practice of generative design. I will then provide a primer in machine learning, and in particular deep learning, from which we can use to understand the basis for what I believe to be the theoretical framework for a generative design process driven by machine learning. This process I am calling conditional-inference design. Here I will expand on some of the core issues that are present in design processes and the human-computer relationships that are required by this new paradigm shift. This framework will serve as the building block to analyze and discuss the various pieces that are required to come together for a ML generative design process. Furthermore, it will also serve loosly as a generalized diagram of the application architecture for terra. The research methods section will touch more precisley on some of the more technical implementation strategies.</p>
         </section>
 
         <h3>Adaptive-Iterative Design</h3>
         <section>
-
-            <p>TODO</p>
+            <p>To best understand a machine learning driven design process, it is first important to describe the alternative approach to generative design, the adaptive-iterative aproach. The adaptive-iterative approach is the domanant approach and one that incorporates most of the generative design workflows in practice today. Adaptive-iteration is algorithmic in nature and is most generaly centered around a rule set paradigm. However the rule set as an abstract concept can take many forms and can be incorporated into the workflow through a variety of methods. The intention of this section is not to provide an exhaustive list of adaptive-iterative methodologies, but rather to outline the general form that this paradigm takes and to diagram it's core parts.</p>
+            
             <img src="img/generative-iterative-design-diagram.svg">
-            <p>TODO</p>
+            <figure>Figure 1: Diagram of the adaptive-iterative approach to generative design</figure>
+            <br/>
+
+            <p><em>Figure 1</em> depicts a generalized diagram of the adaptive-iterative approach. Here, the design process starts with an idea. This may take many different forms, but in general incorporates some problem statement along with a general strategy for solving that problem. <em>Figure 2</em> is depicting a working example of some of the stages of this diagram. The example is using a generative design process to design and evaluate a programing exercise for a mid-rise building in singapore. This example will be used to demonstrate some of the stages of the diagram. </p>
+            
+            <p>The idea stage is typically contained in a high-level discription and is not machine interpretable or easily computable. The abstraction process moves data from the idea stage to the rule set stage by encapsulating the high-level problem statement into a set of discritizable rules. For some methods or algorithms such as constraint satifaction as used in <em>Figure 2</em>, the idea is abstracted into formal logical statments that can be computed on. In some situations it is required that the rule set be complete in order for the algorithm to be able to find an valid solution. Other situations or application may allow for incomplete sets, so long as there there is human-computer feedback available to resolve non-haulting problems or infinite loops. Interpretation is the process of moving the rule-set through to the algorithm stage. The rule set schema and algorithm generally are selected in conjunction with one another to ensure compatability. The generation process is the output of the algorithm acting on the rule set leading to and intermediate media stage. The media stage can also take many forms as is determined as part of the process architecture. In design practice, it is common, although not essential, that the media takes on some type of graphics form. <em>Figure 2</em> uses color coded 3d models as a form of media in the iterateration</p>
+
+            <p>The rule set, algorithm, media flow forms a single interation in the process, where the rule set is representing input parameters, and the media representing a solved output. While generative design is often considered to be computation dependant, it is important to remember that in this senario computation is not reuired. In fact it is very possible to do all stages of the iteration via analouge metheds. Computation merely serves as a means for accomodating more complicated rule sets, lengthy alorithms steps, and high fedelity media. Just as long division has be done by pen and paper, so can generative design. Nevertheless is is common to expect significant productivity by using computational methods through iterations. A key stage in moving from a single iteration into an iterative process is the optimizer stage. While a purely mathematical, or engineering based problem may opt for a software based optimizer, it tends to be in the case of design fields that human interation is required or prefered in this stage; although the designer is just conceptualy replacing the machine optimization mechanism. It is here that the designer/optimizer evaluates the media based off of some objective (or subjective) criteria and adjusts either the rule set or the algorithm through iterations; adapting and providing feedback into the system. The example in <em>Figure 2</em> is using objective energy and environmental simulation of the media to accept or reject interations and tune the rule set. This can and often is done through subjective and aesthetic evaluations as well.</p>
+
             <img src="img/iterative-design.jpg">
-            <p>TODO</p>
+            <figure>Figure 2: Example of the adaptive-iterative approach to generative design solving a building programming problem in conceptual design</figure>
+            <br/>
+            
+            <p>The iterative cycle can in some cases become indefinite. It is dificult to say if or when and end-state wil ever be reached. Nevertheless, the intention is for the media to become more fine-tuned to satisfying evaluation criteria, and ultimatley may reach a state of approval or acceptance. Here the fabrication process brings the media into the final state as an artifact. In architecture or landscape architecture this could be the eventual built object or perhaps even a physical or digital model of it.</p>
 
         </section>
 
-        <h3>A Primer in Machine Learning</h3>
+        <h3>A Primer in Deep Learning</h3>
         <section>
+            <p>To provide a base understanding of deep learning, a technique part of the broader machine lerning field, this section will outline the core theory. Machine learning represents the field of study concerned with a range of algorithms, techniques, and statistical models known to impove their performance on specific tasks. In this sense, machine learning in its current state forms the model construction of a narrow artificial intelligence. Artificial intelligence is then concerned with not only the modeling of the environment, but the ability to decide, act, and interact with the environment based off of this internal model. Machine learning generally is concerned with creating reliable, accurate, and generalizable models of some phenomena, real or abstract, where the models are used for some specified prediction task. This could be as complex as predicting the outcome of certain events in an autonoumous vehicle example given an extensive aresenal of sensor information, or as straight forward as a linear regression prediction on the number of retweets Donald J Trump's next tweet will recieve given the corpus of all his previous tweets. In all cases the machine learning paradigm follows a similar pattern: (1) there exists some body of data discribing a phenomena of interest, (2) that data contains features (obvious or subtle) that signal the outcome of an event, and (3) the data can be encoded in a manner that exposes these signals. In cases where the features are rather apparent in the data, we can turn to more straight forward ML techniques such as linear and logistic regression. However, in cases where the features are not so obvious, more sophisticated metheds such as deep learning can be used. In deep learning, we are learning not only the relative weights of the features (as in regression) but also learning the features themselves. This ability with deep learning to learn the features along with their respective weights has brought on the recent wave of innovation in machine learning.</p>
+
+            <img src="img/neuron.jpg" style="width:90%">
+            <figure>Figure 1: Diagram of the adaptive-iterative approach to generative design</figure>
+            <br/>
 
             <p>TODO</p>
-            <img src="img/neuron.jpg" style="width:90%"></td>
+            
             <img src="img/perceptron.svg" style="width:60%">
 
             <p>TODO</p>
@@ -498,7 +514,7 @@
         <h3>Generative Adversarial Network Models</h3>
         <section>
             <p>Intro text here to describe the models</p>
-
+            <img src="img/techStack.JPG">
             <!-- Model List -->
             <ul class="model-section">
 
@@ -7092,9 +7108,10 @@
                 </li>
 
             </ul>
+
         </section>
 
-        <img src="img/techStack.JPG">
+        
     </div>
 
     <!-- SITE DESCRIPTION -->
